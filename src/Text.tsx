@@ -1,3 +1,4 @@
+import { useBox } from "@react-three/cannon";
 import { Text3D } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Depth, Fresnel, Gradient, LayerMaterial } from "lamina";
@@ -5,6 +6,9 @@ import { useRef } from "react";
 import { MathUtils } from "three";
 
 export default function TextComponent() {
+  const [ref] = useBox(() => ({ position: [-4.2, -1.27, 0] })) as any;
+  const [ref2] = useBox(() => ({ position: [1.5, -1.27, 0] })) as any;
+
   const depthRef = useRef<any>(null!);
   const depthRef2 = useRef<any>(null!);
 
@@ -27,9 +31,11 @@ export default function TextComponent() {
   return (
     <group>
       <Text3D
+        ref={ref}
         bevelSegments={6}
         font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
       >
+        LAM
         {/* @ts-ignore */}
         <LayerMaterial
           color={"white"}
@@ -66,9 +72,20 @@ export default function TextComponent() {
       </Text3D>
 
       <Text3D
+        position={[-4.2, -1.27, 0]}
         bevelSegments={6}
         font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
       >
+        LAM
+        <meshBasicMaterial wireframe />
+      </Text3D>
+
+      <Text3D
+        ref={ref2}
+        bevelSegments={6}
+        font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
+      >
+        INA
         {/* @ts-ignore */}
         <LayerMaterial
           lighting="physical"
@@ -102,6 +119,15 @@ export default function TextComponent() {
             alpha={0.2}
           />
         </LayerMaterial>
+      </Text3D>
+
+      <Text3D
+        position={[1.5, -1.27, 0]}
+        bevelSegments={6}
+        font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
+      >
+        INA
+        <meshBasicMaterial wireframe />
       </Text3D>
     </group>
   );

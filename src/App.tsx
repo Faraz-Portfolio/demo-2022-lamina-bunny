@@ -7,7 +7,6 @@ import Bunny from "./Bunny";
 import Floor from "./Floor";
 import Lighting from "./Lighting";
 import Marble from "./Marble";
-import Tag from "./Tag";
 import TextComponent from "./Text";
 
 function App() {
@@ -32,7 +31,7 @@ function App() {
 
         <Suspense fallback={null}>
           <Physics>
-            <Bounds fit>
+            <Bounds fit margin={0.8}>
               <Bunny />
               <TextComponent />
             </Bounds>
@@ -60,7 +59,6 @@ function App() {
         {/* <OrbitControls enablePan={false} minZoom={90} maxPolarAngle={Math.PI / 2 - 0.1} minPolarAngle={0} /> */}
         <OrbitControls />
       </Canvas>
-      {loaded && <Tag />}
 
       <Loader />
     </>

@@ -1,7 +1,6 @@
 import { Sphere } from "@react-three/drei";
 import { ElementProps, useFrame } from "@react-three/fiber";
 import { Depth, Displace, Fresnel, LayerMaterial } from "lamina";
-import { DisplaceProps } from "lamina/types";
 import { Displace as DisplaceType } from "lamina/vanilla";
 import { useMemo, useRef } from "react";
 import { Group, MathUtils, Mesh, Vector3 } from "three";
@@ -9,9 +8,7 @@ import { Group, MathUtils, Mesh, Vector3 } from "three";
 export default function Blob({
   displaceProps,
   ...props
-}: ElementProps<typeof Group> & {
-  displaceProps?: DisplaceProps;
-}) {
+}: ElementProps<typeof Group> & any) {
   const ref = useRef<Mesh>(null!);
   const rand = useMemo(() => Math.random(), []);
   const strength = useRef(0);
