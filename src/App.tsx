@@ -1,7 +1,7 @@
 import { Physics } from "@react-three/cannon";
 import { Bounds, Loader, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Blob from "./Blob";
 import Bunny from "./Bunny";
 import Floor from "./Floor";
@@ -29,35 +29,32 @@ function App() {
       >
         <color args={["#2114db"]} attach="background" />
 
-        <Suspense fallback={null}>
-          <Physics>
-            <Bounds fit margin={0.8}>
-              <Bunny />
-              <TextComponent />
-            </Bounds>
+        <Physics>
+          <Bounds fit margin={0.8}>
+            <Bunny />
+            <TextComponent />
+          </Bounds>
 
-            <Floor />
-            <Marble setLoaded={setLoaded} />
-          </Physics>
+          <Floor />
+          <Marble setLoaded={setLoaded} />
+        </Physics>
 
-          <Blob position={[-2, -0.5, -3]} />
-          <Blob position={[-2, 1.5, 0]} />
-          <Blob position={[2, 0.8, 1]} />
-          <Blob position={[-2, -0.2, 4]} />
-          <Blob position={[2, 1, -2]} />
-        </Suspense>
+        <Blob position={[-2, -0.5, -3]} />
+        <Blob position={[-2, 1.5, 0]} />
+        <Blob position={[2, 0.8, 1]} />
+        <Blob position={[-2, -0.2, 4]} />
+        <Blob position={[2, 1, -2]} />
         <Lighting />
 
         <gridHelper
-          args={[200, 100, "#1100ff", "#1100ff"]}
+          args={[200, 100, "#1100ff", "#4a3dff"]}
           position={[0, -1.26, 0]}
         />
         <gridHelper
-          args={[200, 1000, "#1100ff", "#1100ff"]}
+          args={[200, 1000, "#1100ff", "#4a3dff"]}
           position={[0, -1.27, 0]}
         />
-        {/* <OrbitControls enablePan={false} minZoom={90} maxPolarAngle={Math.PI / 2 - 0.1} minPolarAngle={0} /> */}
-        <OrbitControls />
+        <OrbitControls autoRotate autoRotateSpeed={0.2} />
       </Canvas>
 
       <Loader />
