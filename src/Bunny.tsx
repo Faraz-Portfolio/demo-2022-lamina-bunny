@@ -8,11 +8,11 @@ import { Depth, Fresnel, LayerMaterial, Noise } from "lamina";
 import { useRef } from "react";
 import { Group } from "three";
 
+const base = import.meta.env.BASE_URL;
+
 export default function Bunny() {
   const group = useRef<Group>(null!);
-  const { nodes } = useGLTF(
-    "/demo-2022-lamina-bunny/lighting_bunny_copy.gltf"
-  ) as any;
+  const { nodes } = useGLTF(base + "lighting_bunny_copy.gltf") as any;
 
   const [ref] = useSphere(() => ({}));
 

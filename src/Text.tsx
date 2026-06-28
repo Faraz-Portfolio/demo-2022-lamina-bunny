@@ -5,6 +5,8 @@ import { Depth, Fresnel, Gradient, LayerMaterial } from "lamina";
 import { useRef } from "react";
 import { MathUtils } from "three";
 
+const base = import.meta.env.BASE_URL;
+
 export default function TextComponent() {
   const [ref] = useBox(() => ({ position: [-4.2, -1.27, 0] })) as any;
   const [ref2] = useBox(() => ({ position: [1.5, -1.27, 0] })) as any;
@@ -16,12 +18,12 @@ export default function TextComponent() {
     const x = MathUtils.lerp(
       depthRef.current.origin.x, //
       (mouse.x * viewport.width) / 2 + 1.27,
-      0.05
+      0.05,
     );
     const y = MathUtils.lerp(
       depthRef.current.origin.y, //
       (mouse.y * viewport.width) / 2 + 1.27,
-      0.05
+      0.05,
     );
 
     depthRef.current.origin.set(x, y, 0);
@@ -33,7 +35,7 @@ export default function TextComponent() {
       <Text3D
         ref={ref}
         bevelSegments={6}
-        font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
+        font={base + "fonts/Roboto_Bold.json"}
       >
         LAM
         {/* @ts-ignore */}
@@ -74,7 +76,7 @@ export default function TextComponent() {
       <Text3D
         position={[-4.2, -1.27, 0]}
         bevelSegments={6}
-        font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
+        font={base + "fonts/Roboto_Bold.json"}
       >
         LAM
         <meshBasicMaterial wireframe />
@@ -83,7 +85,7 @@ export default function TextComponent() {
       <Text3D
         ref={ref2}
         bevelSegments={6}
-        font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
+        font={base + "fonts/Roboto_Bold.json"}
       >
         INA
         {/* @ts-ignore */}
@@ -124,7 +126,7 @@ export default function TextComponent() {
       <Text3D
         position={[1.5, -1.27, 0]}
         bevelSegments={6}
-        font={"/demo-2022-lamina-bunny/fonts/Roboto_Bold.json"}
+        font={base + "fonts/Roboto_Bold.json"}
       >
         INA
         <meshBasicMaterial wireframe />
